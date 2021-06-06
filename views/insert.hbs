@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tennis Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    
+</head>
+
+<body>
+
+{{#if username}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-info text-light">
+    <a class="navbar-brand" href="#">MilosTravel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="paralies">Παραλίες</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="food">Φαγητό</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="stay">Διαμονή</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ancient">Αξιοθέατα</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="userinfo">{{username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{{else}}
+
+  <div id="navplaceholder" class="home">
+  </div>
+  <script>
+      $(function () {
+          $("#navplaceholder").load("navbar1.hbs");
+      });
+  </script>
+{{/if}}
+
+<div class="row justify-content-md-center">
+<div class="col-sm-8 col-md-8 col-12 pb-4 ">
+    <form action="/insert" method="post">
+    <div class ="formtitle"> <h1>Πρόσθεσε ένα νέο μέρος!</h1></div>
+  {{!-- <div class="imgcontainer">
+    <img src="avatar.png" alt="Avatar" class="avatar">
+  </div> --}}
+
+  <div class="container">
+    <label for="onoma"><b>Όνομα μέρους</b></label>
+    <input type="text" placeholder="Όνομα" name="sight_name" required>
+
+    <label for="eponimo"><b>Είδος μέρους</b></label>
+    {{!-- <input type="text" placeholder="Eπώνυμο" name="surname" required> --}}
+
+    <select name="sight_type">
+    <option value ="paralies">Παραλία</option>
+    <option value ="food">Εστιατόριο</option>
+    <option value ="stay">Ξενοδοχείο</option>
+    <option value ="ancient">Αξιοθέατα</option>
+    </select> <br>
+
+    <label for="email"><b>Email μέρους (μόνο για υπηρεσία)</b></label>
+    <input type="text" placeholder="Email" name="service_email">
+
+    <label for="tele"><b>Τηλέφωνο μέρους (μόνο για υπηρεσία)</b></label>
+    <input type="text" placeholder="tele" name="service_phone">
+
+    <label for="location"><b>Τοποθεσία από Google maps</b></label>
+    <input type="text" placeholder="Τοποθεσία" name="location" >
+
+    <label for="image"><b>Image Source</b></label>
+    <input type="text" placeholder="Image source" name="photo_src" >
+
+    <label for="text">Περιγραφή για το μέρους</label>
+    <textarea id="text" name="sight_text" rows="4" cols="50">
+    </textarea>
+
+    <button type="submit">Υποβολή</button>
+    {{!-- <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label> --}}
+  </div>
+  {{#if message }}
+    <h4 class='alert alert-danger mt-4'>{{message}}</h4>
+  {{/if}}
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button onclick="window.location.href='home';" class="cancelbtn">Cancel</button>
+    
+    {{!-- <span class="psw">Forgot <a href="#">password?</a></span> --}}
+  </div>
+</form>
+</div>
+</div>
+
+ <div>
+      <h1>&nbsp;</h1>
+  </div>
+  <div id="footer-placeholder">
+  </div>
+  
+  <script>
+      $(function () {
+          $("#footer-placeholder").load("footer.html");
+      });
+  </script>
+</body>
+
+</html>

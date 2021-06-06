@@ -1,0 +1,287 @@
+
+div.stars {
+  width: 270px;
+  display: inline-block
+}
+
+.mt-200 {
+  margin-top: 200px
+}
+
+input.star {
+  display: none
+}
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #4A148C;
+  transition: all .2s
+}
+
+input.star:checked~label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s
+}
+
+input.star-5:checked~label.star:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952
+}
+
+input.star-1:checked~label.star:before {
+  color: #F62
+}
+
+label.star:hover {
+  transform: rotate(-15deg) scale(1.3)
+}
+
+label.star:before {
+  content: '\f006';
+  font-family: FontAwesome
+}
+
+
+body{
+    font-family: arial, helvetica, sans-serif; 
+    font-size: 14pt;
+    color:#333;
+    background-color:honeydew;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+#navplaceholder{
+    position:sticky;
+  }
+  
+.navbar {
+    color: whitesmoke;
+  }
+
+.cardtable{
+    display: flexbox;
+  }
+
+header.masthead {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 57px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+  header.masthead:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.masthead .page-heading,
+  header.masthead .post-heading,
+  header.masthead .site-heading {
+    color: #fff;
+  }
+  header.masthead .page-heading,
+  header.masthead .site-heading {
+    text-align: center;
+  }
+  header.masthead .page-heading h1, header.masthead .page-heading .h1,
+  header.masthead .site-heading h1,
+  header.masthead .site-heading .h1 {
+    font-size: 3rem;
+  }
+  header.masthead .page-heading .subheading,
+  header.masthead .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.masthead .post-heading .meta,
+  header.masthead .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.masthead .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.masthead .post-heading .meta a {
+    color: #fff;
+  }
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 500%;
+  }
+
+  .map-container{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    }
+    .map-container iframe{
+    left:0;
+    top:0;
+    height:50%;
+    width:100%;
+    position:absolute;
+    }
+
+    .post .post-heading {
+        height: 95px;
+        padding: 20px 15px;
+      }
+      .post .post-heading .avatar {
+        width: 60px;
+        height: 60px;
+        display: block;
+        margin-right: 15px;
+      }
+      .post .post-heading .meta .title {
+        margin-bottom: 0;
+      }
+      .post .post-heading .meta .title a {
+        color: black;
+      }
+      .post .post-heading .meta .title a:hover {
+        color: #aaaaaa;
+      }
+      .post .post-heading .meta .time {
+        margin-top: 8px;
+        color: #999;
+      }
+      .post .post-image .image {
+        width: 100%;
+        height: auto;
+      }
+      .post .post-description {
+        padding: 15px;
+      }
+      .post .post-description p {
+        font-size: 14px;
+      }
+      .post .post-description .stats {
+        margin-top: 20px;
+      }
+      .post .post-description .stats .stat-item {
+        display: inline-block;
+        margin-right: 15px;
+      }
+      .post .post-description .stats .stat-item .icon {
+        margin-right: 8px;
+      }
+
+
+      label {
+        color: rgb(212, 208, 208)
+    }
+    
+    #align-form {
+        margin-top: 20px;
+    }
+    
+
+label{
+     color:rgba(16, 46, 46, 1);
+}
+
+    .form-group p a {
+        color: white
+    }
+    
+    #checkbx {
+        background-color: black
+    }
+    
+    #darker img {
+        margin-right: 15px;
+        position: static
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        background-color: rgb(33, 182, 168);
+        border: 1px solid rgba(16, 46, 46, 1);
+        border-radius: 12px
+    }
+    
+    form {
+        /* border: 1px solid rgba(16, 46, 46, 1); */
+        background-color: rgb(232,232,232);
+        border-radius: 5px;
+        padding: 20px
+    }
+
+    .comments {
+      margin-top: 5%;
+      margin-left: 20px
+  }
+  
+  .comment {
+      /* border: 1px solid rgba(16, 46, 46, 1); */
+      background-color: rgb(232,232,232);
+      float: left;
+      border-radius: 5px;
+      padding-left: 40px;
+      padding-right: 30px;
+      padding-top: 10px
+  }
+  
+  .comment h4,
+  .comment span,
+  .darker h4,
+  .darker span {
+      display: inline
+  }
+  
+  .comment p,
+  .comment span,
+  .darker p,
+  .darker span {
+      color: rgb(0, 0, 0);
+  }
+
+  #post {
+    margin: 10px;
+    padding: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    background-color: rgba(0, 181, 204, 1);
+    border-color: #a88734 #9c7e31 #846a29;
+    color:white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 13px;
+    width: 50%
+}

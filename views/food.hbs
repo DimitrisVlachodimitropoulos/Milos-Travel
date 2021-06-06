@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="utf-8">
+    <title>Milos Travel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" > -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="food.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+  
+</head>
+
+<body>
+
+{{#if username}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-info text-light">
+    <a class="navbar-brand" href="#">MilosTravel</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="paralies">Παραλίες</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="food">Φαγητό</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="stay">Διαμονή</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ancient">Αξιοθέατα</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="userinfo">{{username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{{else}}
+  <div id="navplaceholder" class="home">
+  </div>
+  <script>
+      $(function () {
+          $("#navplaceholder").load("navbar1.hbs");
+      });
+  </script>
+{{/if}}
+
+<div class="container-fluid">
+  <img src="gemista-new.jpg" alt="Snow" style="width:100%;">
+  <div class="centered">ΦΑΓΗΤΟ</div>
+</div>
+
+   <div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+                  <p class="p-3 text-justify">
+                  Η γαστρονομία του νησιού είναι πλούσια, με άφθονα ντόπια τρόφιμα και πεντανόστιμα εδέσματα! 
+                  Κάποιες από τις ντόπιες και παραδοσιακές γεύσεις που θα απολαύσετε στη Μήλο είναι τα ξακουστά 
+                  πιτταράκια, οι διάσημες φλαούνες, η δροσιστική καρπουζόπιτα, η παραδοσιακή ξυνομυζήθρα, 
+                  τα φημισμένα σκορδολάζανα αλλά και το πεντανόστιμο γλυκό του κουταλιού της, το Κουφέτο Μήλου.
+
+                  Εκτός από τις εκπληκτικές γεύσεις, μην παραλείψουμε να αναφερθούμε στην άψογη εξυπηρέτηση, 
+                  το γρήγορο σέρβις, το φιλικό και οικείο κλίμα και τα όμορφα διακοσμημένα εστιατόρια σε 
+                  στυλ μινιμαλιστικό και με χρώματα χαρακτηριστικά των Κυκλάδων.
+
+                </p>
+                  <p class="p-3 text-justify">
+                  Επιπλέον, θα βρείτε εστιατόρια δίπλα στη θάλασσα - κυριολεκτικά, πάνω στο κύμα -, ψηλά στην Πλάκα, 
+                  για να αγναντεύετε το μαγευτικό ηλιοβασίλεμα, αλλά και σε αυλές, περιτριγυρισμένα από 
+                  μοσχομυριστά πολύχρωμα λουλούδια.
+
+                  Τέλος, όσον αφορά τις τιμές, μην ανησυχείτε...Τόσο οικονομικές, που αν αναλογιστείτε την ποιότητα 
+                  των γεύσεων, θα εκπλαγείτε!
+                  
+                </p>
+        </div>
+
+
+
+    </div>
+  </div>
+
+<div class="container">
+
+<div class = "card-group">
+
+
+
+{{#each object}}
+
+<div class="card"  style="width: 18rem;">
+  <img src = "{{photo_src}}" class="card-img-top" alt="..." id='img'>
+    <div class="text-center"> 
+    <div class="card-body">
+    <h5 class="card-title">{{sight_name}}</h5>
+    
+    <a href="/pick{{sight_id}}" id_value="{{sight_id}}" class="btn btn-primary stretched-link">Προβολή</a>
+   {{!-- <a id_value="{{sight_id}}" class="btn btn-primary stretched-link">Προβολή</a> --}}
+
+   {{#if ../admin}}
+
+    <a href="/pick{{sight_id}}" id_value="{{sight_id}}" class="btn btn-primary " style="background-color: rgb(179, 57, 57)">Διαγραφή</a>
+
+
+    {{/if}}
+
+    </div>
+  </div>
+</div>
+
+{{/each}}
+
+
+</div>
+</div>
+
+<div>
+<h1>&nbsp;</h1>
+</div>
+
+ </div>
+  <div id="footer-placeholder">
+  </div>
+
+ <script>
+      $(function () {
+          $("#footer-placeholder").load("footer.html");
+      });
+</script>
+
+</body>
+
+</html>

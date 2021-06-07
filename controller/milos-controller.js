@@ -35,7 +35,7 @@ exports.loadHome = (req,res) => {
         username = req.session.user.username;
         admin = req.session.user.admin;
         data = {email:email,username:username,admin:admin};
-        console.log(req.session.user.email);
+        // console.log(req.session.user.email);
         res.render(path,data);
     }
     else(
@@ -98,7 +98,7 @@ exports.getArticle = async(req,response) =>{
         sql.query('SELECT * FROM photos WHERE sight_id = $1',[path],async(error,result) =>{
             var data2 = JSON.stringify(result.rows)
 
-            sql.query('SELECT * FROM comments WHERE sight_id = $1',[path],async(error,result) =>{
+            sql.query('SELECT * FROM comments WHERE sight_id = $1 ORDER BY datetime DESC',[path],async(error,result) =>{
             var data3 = JSON.stringify(result.rows)
 
                 sql.query('SELECT * FROM ratings WHERE sight_id = $1',[path],async(err,ratingss) =>{
@@ -118,13 +118,13 @@ exports.getArticle = async(req,response) =>{
                         username = req.session.user.username;
                         admin = req.session.user.admin;
                         const parsedata = {sights:JSON.parse(data1),photos:JSON.parse(data2),comments:JSON.parse(data3),rating:stringsum,email:email,username:username,admin:admin};
-                        console.log(parsedata);
+                        // console.log(parsedata);
                        
                         response.render('article',parsedata);
                     }
                     else{
                         const parsedata = {sights:JSON.parse(data1),photos:JSON.parse(data2),comments:JSON.parse(data3),rating:stringsum};
-                        console.log(parsedata);
+                        // console.log(parsedata);
                        
                         response.render('article',parsedata);
                     }
@@ -140,7 +140,7 @@ exports.register= (req,result) =>{
 
     sql.query('SELECT email FROM users WHERE email = $1',[email],async (error,results) =>{
         if(error){
-            console.log(error);
+            throw error
         }
         const data = results.rows;
 
@@ -164,10 +164,10 @@ exports.register= (req,result) =>{
 
         sql.query(query, (error,res) =>{
             if(error){
-                console.log(error);
+                throw error
             }
             else {
-                return result.render('register',{
+                return result.render('login',{
                     message:'User registered please Login.'
                 })
             }
@@ -217,13 +217,13 @@ exports.logout = (req,res) =>{
 }
 //
 exports.insertArticle = async (req,res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const {sight_name,sight_type,service_email,service_phone,location,photo_src,sight_text} = req.body;
-    console.log(sight_name,sight_type,service_email,service_phone,location,photo_src,sight_text);
+    // console.log(sight_name,sight_type,service_email,service_phone,location,photo_src,sight_text);
 
     sql.query('SELECT sight_name FROM sights WHERE sight_name = $1',[sight_name],async (error,results) =>{
         if(error){
-            console.log(error);
+            throw error
         }
         const data = results.rows;
 
@@ -232,13 +232,13 @@ exports.insertArticle = async (req,res) => {
                 message:'Article with that name already exists.'
             })
         } else {
-            console.log("tha eprepe na bei");
+           
             const query = {
                 text: 'INSERT INTO sights (sight_name,location,service_email,service_phone,sight_type,photo_src,sight_text) VALUES ($1,$2,$3,$4,$5,$6,$7)',
                 values: [sight_name,location,service_email,service_phone,sight_type,photo_src,sight_text],
             }
             sql.query(query, (error,results) =>{
-                console.log("den ginetai an mhn bhke")
+               
                 return res.render('insert',{
                     message:'New article added.'
                 })
@@ -250,8 +250,7 @@ exports.insertArticle = async (req,res) => {
 }
 
 exports.updateUser = async (req,res) =>{
-    console.log(req.body);
-    console.log(req.session.user);
+ 
     if(!req.session.isAuth){
         res.redirect('/')
     }
@@ -368,9 +367,9 @@ exports.insertcomments= async (req,res) =>{
     }
 
     sql.query(query, (error,result) =>{
-        console.log("new comment")
+      
         if(error){
-            console.log(error);
+           throw error
         }
         else {
             res.status(200).redirect("/pick"+sight_id);
@@ -390,21 +389,21 @@ exports.addRating= async (req,res) =>{
     const sight_id = extra.substring(1);
     const rating = extra.charAt(0);
     const email = req.session.user.email
-    sql.query('SELECT user_email FROM ratings WHERE user_email = $1',[email],async (error,results) =>{
+    sql.query('SELECT user_email FROM ratings WHERE user_email = $1 AND sight_id = $2',[email,sight_id],async (error,results) =>{
         if(error){
-            console.log(error);
+           throw error
         }
         const data = results.rows;
-        console.log(data);
+        // console.log(data);
 
         if(data.length > 0 ){
             const query = {
-                text: 'UPDATE ratings SET rating = $1 WHERE user_email = $2',
-                values: [rating,email],
+                text: 'UPDATE ratings SET rating = $1 WHERE user_email = $2 AND sight_id = $3',
+                values: [rating,email,sight_id],
             }
             sql.query(query, (error,result) =>{
                 if(error){
-                    console.log(error);
+                   throw error
                 }
                 else {
                     res.status(200).redirect("/pick"+sight_id);
@@ -417,9 +416,9 @@ exports.addRating= async (req,res) =>{
                 values: [sight_id,rating,email],
             }
             sql.query(query, (error,result) =>{
-                console.log("new rating")
+                // console.log("new rating")
                 if(error){
-                    console.log(error);
+                   throw error
                 }
                 else {
                     res.status(200).redirect("/pick"+sight_id);
@@ -441,7 +440,7 @@ exports.makeadmin = async(req,res) =>{
             }
             sql.query(query, (error,result) =>{
                 if(error){
-                    console.log(error);
+                    throw error
                 }
                 else {
                     res.status(200).redirect("/userinfo");

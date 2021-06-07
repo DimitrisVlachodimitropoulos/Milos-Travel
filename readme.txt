@@ -13,6 +13,9 @@ b.Τρέχουμε το command npm run debug
 GitHub LINK:
 https://github.com/DimitrisVlachodimitropoulos/Milos-Travel
 
+!!!!!!!!!!!!!!!!!!!!!!!\\\\HEROKU LINK:////!!!!!!!!!!!!!!!!!!!!!!!
+https://mighty-ravine-11433.herokuapp.com/home
+
 
 
 Ήδη Διαθέσιμοι Λογαριασμοί:

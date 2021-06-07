@@ -1,7 +1,5 @@
 {
-  "engines": {
-    "node": "14.17.0"
-  },
+ 
   "name": "task-list",
   "version": "1.0.0",
   "main": "index.js",
@@ -20,6 +18,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "14.17.0"
+  },
   "dependencies": {
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
